@@ -1,0 +1,34 @@
+test_cli_full_flow_reject_duplicate_kill_and_slot (test_system.CLITests) ... ok
+test_negative_kill_and_unknown_tier_do_not_mutate (test_system.CLITests) ... ok
+test_three_slots_and_storage (test_system.CLITests) ... ok
+test_two_processes_one_offer_one_charge (test_system.CLITests) ... ok
+test_data_parameter_and_text_consistent_with_initial_design (test_system.CatalogTests) ... ok
+test_duplicate_json_key_rejected (test_system.CatalogTests) ... ok
+test_duplicate_skill_id_rejected (test_system.CatalogTests) ... ok
+test_fractional_target_rejected (test_system.CatalogTests) ... ok
+test_full_catalog_and_five_distinct_levels (test_system.CatalogTests) ... ok
+test_identity_distribution (test_system.CatalogTests) ... ok
+test_initial_prices_and_rewards (test_system.CatalogTests) ... ok
+test_missing_level_rejected (test_system.CatalogTests) ... ok
+test_nonfinite_rejected (test_system.CatalogTests) ... ok
+test_numeric_overcap_rejected (test_system.CatalogTests) ... ok
+test_unknown_pool_rejected (test_system.CatalogTests) ... ok
+test_wrong_growth_rejected (test_system.CatalogTests) ... ok
+test_charge_once_and_pending_prevents_reroll (test_system.DrawTests) ... ok
+test_conversion_exact_income_expense_price_and_small_reward (test_system.DrawTests) ... ok
+test_cross_pool_upgrade_and_global_full_removal (test_system.DrawTests) ... ok
+test_empty_pool_no_charge (test_system.DrawTests) ... ok
+test_free_reward_three_choices_and_no_duplicate_token (test_system.DrawTests) ... ok
+test_insufficient_funds_no_change (test_system.DrawTests) ... ok
+test_invalid_choice_no_mutation (test_system.DrawTests) ... ok
+test_offer_persists_across_save_and_load (test_system.DrawTests) ... ok
+test_pending_prevents_conversion (test_system.DrawTests) ... ok
+test_pool_can_really_be_exhausted (test_system.DrawTests) ... ok
+test_real_random_unique_and_unbiased_sampler_contract (test_system.DrawTests) ... ok
+test_single_candidate_full_price (test_system.DrawTests) ... ok
+test_version_change_blocks_choice (test_system.DrawTests) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 1.949s
+
+OK

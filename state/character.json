@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "主角（待命名）",
+  "realm": "学徒级",
+  "currency_unit": "旧积分",
+  "converted": false,
+  "balance": "0",
+  "total_income": "0",
+  "total_expense": "0",
+  "owned": {},
+  "equipped": [],
+  "slots": 3,
+  "claimed_milestones": [],
+  "claimed_rewards": [],
+  "pending_offer": null,
+  "ledger": [],
+  "draw_history": [],
+  "revision": 1
+}

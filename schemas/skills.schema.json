@@ -1,0 +1,366 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "catalog_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_]+$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pools": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "metal",
+                "wood",
+                "water",
+                "fire",
+                "earth",
+                "wind",
+                "lightning",
+                "light",
+                "space",
+                "time",
+                "blade",
+                "sword",
+                "spear",
+                "staff",
+                "axe",
+                "unarmed",
+                "movement",
+                "controller",
+                "illusion",
+                "soul",
+                "beast",
+                "body",
+                "gene",
+                "special",
+                "training",
+                "will"
+              ]
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "role": {
+            "enum": [
+              "控制",
+              "攻击",
+              "辅助",
+              "防御"
+            ]
+          },
+          "mechanic": {
+            "enum": [
+              "amplitude",
+              "block",
+              "boost",
+              "burn",
+              "chain",
+              "clone",
+              "commands",
+              "contract",
+              "conversion",
+              "cooldown",
+              "death",
+              "decoy",
+              "delay",
+              "dodge",
+              "dot",
+              "duration",
+              "gene",
+              "hits",
+              "kill_recovery",
+              "marks",
+              "orbit",
+              "orbit_shield",
+              "pierce",
+              "projectile",
+              "radius",
+              "range",
+              "reduction",
+              "reflect",
+              "regen",
+              "return",
+              "saving",
+              "shield",
+              "slow",
+              "stacks",
+              "targets",
+              "tethers",
+              "trail",
+              "transfer",
+              "warning",
+              "zones"
+            ]
+          },
+          "subject": {
+            "type": "string",
+            "minLength": 1
+          },
+          "activation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "baseline": {
+            "type": "object",
+            "properties": {
+              "energy_budget_pct": {
+                "const": 10
+              },
+              "cooldown_s": {
+                "const": 8
+              },
+              "range": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "energy_budget_pct",
+              "cooldown_s",
+              "range"
+            ],
+            "additionalProperties": false
+          },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "levels": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "level": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 5
+                },
+                "text": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "bonus_pct": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "maximum": 50
+                    },
+                    "range_bonus_pct": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "maximum": 50
+                    },
+                    "cost_reduction_pct": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "maximum": 25
+                    },
+                    "damage_reduction_pct": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "maximum": 25
+                    },
+                    "reflection_pct": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "maximum": 25
+                    },
+                    "dodge_bonus_pp": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "maximum": 10
+                    },
+                    "per_stack_bonus_pct": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "maximum": 10
+                    },
+                    "amplitude_bonus_pct": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "maximum": 50
+                    },
+                    "gene_bonus_pct": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "maximum": 10
+                    },
+                    "heal_pct_per_s": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "maximum": 1
+                    },
+                    "recovery_pct": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "maximum": 5
+                    },
+                    "conversion_pct": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "maximum": 30
+                    },
+                    "slow_pct": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "maximum": 25
+                    },
+                    "clones": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 12
+                    },
+                    "duration_s": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "maximum": 6
+                    },
+                    "delay_s": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "maximum": 1
+                    },
+                    "warning_s": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "maximum": 0.5
+                    },
+                    "radius_factor": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "maximum": 0.8
+                    },
+                    "lifespan_s": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "maximum": 60
+                    },
+                    "contracts": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 12
+                    },
+                    "marks": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 12
+                    },
+                    "hits": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 12
+                    },
+                    "decoys": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 12
+                    },
+                    "shields": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 12
+                    },
+                    "projectiles": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 12
+                    },
+                    "zones": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 12
+                    },
+                    "command_channels": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 12
+                    },
+                    "orbit_count": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 12
+                    },
+                    "tethers": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 12
+                    },
+                    "targets": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 12
+                    },
+                    "cooldown_s": {
+                      "type": "number",
+                      "minimum": 8,
+                      "maximum": 86400
+                    },
+                    "preparation_s": {
+                      "type": "number",
+                      "minimum": 8,
+                      "maximum": 86400
+                    }
+                  },
+                  "minProperties": 1,
+                  "maxProperties": 1,
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "level",
+                "text",
+                "parameters"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 5,
+            "maxItems": 5
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "pools",
+          "role",
+          "mechanic",
+          "subject",
+          "activation",
+          "baseline",
+          "requirements",
+          "levels"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "catalog_version",
+    "skills"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "pools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "enum": [
+              "metal",
+              "wood",
+              "water",
+              "fire",
+              "earth",
+              "wind",
+              "lightning",
+              "light",
+              "space",
+              "time",
+              "blade",
+              "sword",
+              "spear",
+              "staff",
+              "axe",
+              "unarmed",
+              "movement",
+              "controller",
+              "illusion",
+              "soul",
+              "beast",
+              "body",
+              "gene",
+              "special",
+              "training",
+              "will"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "category": {
+            "type": "string",
+            "minLength": 1
+          },
+          "price_base_points": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "identity": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "category",
+          "price_base_points",
+          "identity"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 26,
+      "maxItems": 26
+    }
+  },
+  "required": [
+    "schema_version",
+    "pools"
+  ],
+  "additionalProperties": false
+}

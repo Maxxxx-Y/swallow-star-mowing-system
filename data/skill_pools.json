@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "pools": [
+    {
+      "id": "metal",
+      "name": "金之法则",
+      "category": "本源法则",
+      "price_base_points": 100,
+      "identity": "锋锐、穿透、定点击破"
+    },
+    {
+      "id": "wood",
+      "name": "木之法则",
+      "category": "本源法则",
+      "price_base_points": 100,
+      "identity": "缠绕、韧性、持续作战"
+    },
+    {
+      "id": "water",
+      "name": "水之法则",
+      "category": "本源法则",
+      "price_base_points": 100,
+      "identity": "卸力、连击、流动"
+    },
+    {
+      "id": "fire",
+      "name": "火之法则",
+      "category": "本源法则",
+      "price_base_points": 100,
+      "identity": "燃烧、爆发、连锁"
+    },
+    {
+      "id": "earth",
+      "name": "土之法则",
+      "category": "本源法则",
+      "price_base_points": 100,
+      "identity": "承伤、屏障、反震"
+    },
+    {
+      "id": "wind",
+      "name": "风之法则",
+      "category": "本源法则",
+      "price_base_points": 100,
+      "identity": "移动、多段切割、推拉"
+    },
+    {
+      "id": "lightning",
+      "name": "雷电法则",
+      "category": "本源法则",
+      "price_base_points": 100,
+      "identity": "连锁、脉冲、麻痹"
+    },
+    {
+      "id": "light",
+      "name": "光线法则",
+      "category": "本源法则",
+      "price_base_points": 100,
+      "identity": "折射、致盲、感知干扰"
+    },
+    {
+      "id": "space",
+      "name": "空间法则",
+      "category": "本源法则",
+      "price_base_points": 1000,
+      "identity": "轨迹偏移、位移、区域封锁"
+    },
+    {
+      "id": "time",
+      "name": "时间法则",
+      "category": "本源法则",
+      "price_base_points": 1000,
+      "identity": "节律、延迟、行动窗口"
+    },
+    {
+      "id": "blade",
+      "name": "刀法",
+      "category": "战斗技艺",
+      "price_base_points": 200,
+      "identity": "扇面斩击、回旋、追斩"
+    },
+    {
+      "id": "sword",
+      "name": "剑法",
+      "category": "战斗技艺",
+      "price_base_points": 200,
+      "identity": "精准、剑阵、攻守转换"
+    },
+    {
+      "id": "spear",
+      "name": "枪法",
+      "category": "战斗技艺",
+      "price_base_points": 200,
+      "identity": "直线穿透、距离、突刺"
+    },
+    {
+      "id": "staff",
+      "name": "棍法",
+      "category": "战斗技艺",
+      "price_base_points": 200,
+      "identity": "横扫、震荡、压制"
+    },
+    {
+      "id": "axe",
+      "name": "斧锤",
+      "category": "战斗技艺",
+      "price_base_points": 200,
+      "identity": "蓄力、破防、重击"
+    },
+    {
+      "id": "unarmed",
+      "name": "拳掌爪",
+      "category": "战斗技艺",
+      "price_base_points": 200,
+      "identity": "贴身连击、擒拿、寸劲"
+    },
+    {
+      "id": "movement",
+      "name": "身法",
+      "category": "战斗技艺",
+      "price_base_points": 200,
+      "identity": "闪避、转向、追击、脱离"
+    },
+    {
+      "id": "controller",
+      "name": "掌控者",
+      "category": "精神念师",
+      "price_base_points": 200,
+      "identity": "念力控物、兵器编队、灵魂振幅"
+    },
+    {
+      "id": "illusion",
+      "name": "幻术师",
+      "category": "精神念师",
+      "price_base_points": 300,
+      "identity": "假目标、错位、感知诱导"
+    },
+    {
+      "id": "soul",
+      "name": "灵魂秘术",
+      "category": "精神念师",
+      "price_base_points": 500,
+      "identity": "灵魂攻防、契约、精神韧性"
+    },
+    {
+      "id": "beast",
+      "name": "驯兽师",
+      "category": "精神念师",
+      "price_base_points": 300,
+      "identity": "战兽协同、命令、侦察"
+    },
+    {
+      "id": "body",
+      "name": "身体振幅",
+      "category": "肉身",
+      "price_base_points": 200,
+      "identity": "发力链、爆发、姿态控制"
+    },
+    {
+      "id": "gene",
+      "name": "生命基因",
+      "category": "肉身",
+      "price_base_points": 1000,
+      "identity": "潜力开发、生命稳定、神体维护"
+    },
+    {
+      "id": "special",
+      "name": "特殊技能",
+      "category": "特殊",
+      "price_base_points": 500,
+      "identity": "吞噬、分身、恢复、药剂及杂项"
+    },
+    {
+      "id": "training",
+      "name": "特殊修炼",
+      "category": "特殊",
+      "price_base_points": 1000,
+      "identity": "练习、复盘、感悟辅助"
+    },
+    {
+      "id": "will",
+      "name": "意志秘术",
+      "category": "特殊",
+      "price_base_points": 10000,
+      "identity": "意志攻防、压制、专注"
+    }
+  ]
+}

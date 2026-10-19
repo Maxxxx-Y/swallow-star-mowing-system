@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "system_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "initial_slots": {
+      "const": 3
+    },
+    "max_skill_level": {
+      "const": 5
+    },
+    "min_skills_per_pool": {
+      "const": 11
+    },
+    "normal_choices": {
+      "const": 2
+    },
+    "reward_choices": {
+      "const": 3
+    },
+    "quality_enabled": {
+      "const": false
+    },
+    "fusion_enabled": {
+      "const": false
+    },
+    "currency": {
+      "type": "object",
+      "properties": {
+        "conversion_divisor": {
+          "const": 1000
+        },
+        "conversion_once": {
+          "const": true
+        },
+        "decimal_places": {
+          "const": 3
+        },
+        "initial_balance_base_points": {
+          "const": 0
+        }
+      },
+      "required": [
+        "conversion_divisor",
+        "conversion_once",
+        "decimal_places",
+        "initial_balance_base_points"
+      ],
+      "additionalProperties": false
+    },
+    "limits": {
+      "type": "object",
+      "properties": {
+        "single_bonus_pct": {
+          "const": 50
+        },
+        "single_damage_reduction_pct": {
+          "const": 25
+        },
+        "total_bonus_pct": {
+          "const": 50
+        },
+        "total_damage_reduction_pct": {
+          "const": 50
+        },
+        "total_cost_reduction_pct": {
+          "const": 50
+        },
+        "total_slow_pct": {
+          "const": 50
+        },
+        "total_dodge_bonus_pp": {
+          "const": 30
+        },
+        "recovery_per_10s_pct": {
+          "const": 5
+        },
+        "control_duration_s": {
+          "const": 6
+        },
+        "max_clones": {
+          "const": 3
+        }
+      },
+      "required": [
+        "single_bonus_pct",
+        "single_damage_reduction_pct",
+        "total_bonus_pct",
+        "total_damage_reduction_pct",
+        "total_cost_reduction_pct",
+        "total_slow_pct",
+        "total_dodge_bonus_pp",
+        "recovery_per_10s_pct",
+        "control_duration_s",
+        "max_clones"
+      ],
+      "additionalProperties": false
+    },
+    "slot_milestones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "slots_added": {
+            "const": 1
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "slots_added"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "reward_base_points": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "minProperties": 11
+    },
+    "future_reward_policy": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "system_version",
+    "initial_slots",
+    "max_skill_level",
+    "min_skills_per_pool",
+    "normal_choices",
+    "reward_choices",
+    "quality_enabled",
+    "fusion_enabled",
+    "currency",
+    "limits",
+    "slot_milestones",
+    "reward_base_points",
+    "future_reward_policy"
+  ],
+  "additionalProperties": false
+}

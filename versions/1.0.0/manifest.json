@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "date": "2026-10-19",
+  "catalog_hash": "1278fd90ab2305dec696923f70f63ab222b6e2efafc4bb51bb24bfde5d4a9ce7",
+  "files": {
+    "data/config.json": "998600a2d08740f0fffcef26e23fa455a84fe56051dee7a0b4ef3fd30487d0d9",
+    "data/skill_pools.json": "eb2b9eaecb5ea508460ca050f0db132a3156897a8712b825164da4befc9f5048",
+    "data/skills.json": "6f28db6c574b374daa5f288529125b71eb756b6dcf3ba31f94eb1fc282e0a568",
+    "schemas/character.schema.json": "d07d1d58d65985b4a406e92970fa70efb4d12097b677c3f670158254bdf0181d",
+    "schemas/config.schema.json": "afed0107aaaf1421752ae3614137e8d810407fe9e592a42c8eee235d6a9ff3fd",
+    "schemas/skill_pools.schema.json": "5937c504b4d0794c2724d4da9dd57e28f2c53ab53872550e37dd84406de81d45",
+    "schemas/skills.schema.json": "dcd898f6a3cea335bffdebafb5e402f915ae8204e6923c1298bec2e4ba523a03"
+  }
+}

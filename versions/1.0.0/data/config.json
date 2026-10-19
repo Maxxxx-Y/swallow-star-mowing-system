@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "system_version": "1.0.0",
+  "initial_slots": 3,
+  "max_skill_level": 5,
+  "min_skills_per_pool": 11,
+  "normal_choices": 2,
+  "reward_choices": 3,
+  "quality_enabled": false,
+  "fusion_enabled": false,
+  "currency": {
+    "conversion_divisor": 1000,
+    "conversion_once": true,
+    "decimal_places": 3,
+    "initial_balance_base_points": 0
+  },
+  "limits": {
+    "single_bonus_pct": 50,
+    "single_damage_reduction_pct": 25,
+    "total_bonus_pct": 50,
+    "total_damage_reduction_pct": 50,
+    "total_cost_reduction_pct": 50,
+    "total_slow_pct": 50,
+    "total_dodge_bonus_pp": 30,
+    "recovery_per_10s_pct": 5,
+    "control_duration_s": 6,
+    "max_clones": 3
+  },
+  "slot_milestones": [
+    {
+      "id": "main_earth_end",
+      "name": "地球主线终章（作者确认完成）",
+      "slots_added": 1
+    },
+    {
+      "id": "main_cosmic_turn",
+      "name": "宇宙主线重大转折（作者确认完成）",
+      "slots_added": 1
+    },
+    {
+      "id": "main_immortal",
+      "name": "不朽主线终章（作者确认完成）",
+      "slots_added": 1
+    }
+  ],
+  "reward_base_points": {
+    "初级兽兵": 1,
+    "中级兽兵": 2,
+    "高级兽兵": 3,
+    "初级兽将": 10,
+    "中级兽将": 20,
+    "高级兽将": 30,
+    "初级领主": 100,
+    "中级领主": 200,
+    "高级领主": 300,
+    "王级怪兽": 1000,
+    "皇级怪兽": 3000,
+    "行星级1-3阶": 1000,
+    "行星级4-6阶": 2000,
+    "行星级7-9阶": 3000
+  },
+  "future_reward_policy": "恒星级及以上暂不预设；后续通过明确版本修改奖励表。地球怪兽始终固定分档，不随主角变化。"
+}
