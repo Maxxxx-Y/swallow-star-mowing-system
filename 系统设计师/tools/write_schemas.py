@@ -2,10 +2,10 @@
 import json
 import sys
 from pathlib import Path
-sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'抽奖执行器'))
 import system
 
-ROOT=system.ROOT
+ROOT=system.DESIGN_ROOT
 BASE={'$schema':'https://json-schema.org/draft/2020-12/schema'}
 S={'type':'string','minLength':1}
 INT={'type':'integer','minimum':1}

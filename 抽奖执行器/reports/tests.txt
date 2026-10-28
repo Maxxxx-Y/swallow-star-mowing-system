@@ -27,8 +27,12 @@ test_pool_can_really_be_exhausted (test_system.DrawTests) ... ok
 test_real_random_unique_and_unbiased_sampler_contract (test_system.DrawTests) ... ok
 test_single_candidate_full_price (test_system.DrawTests) ... ok
 test_version_change_blocks_choice (test_system.DrawTests) ... ok
+test_command_can_run_outside_project_directory (test_system.LayoutTests) ... ok
+test_default_state_uses_administrator_folder (test_system.LayoutTests) ... ok
+test_existing_character_and_catalog_have_one_canonical_location (test_system.LayoutTests) ... ok
+test_render_preserves_three_role_layout (test_system.LayoutTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 29 tests in 1.949s
+Ran 33 tests in 1.932s
 
 OK

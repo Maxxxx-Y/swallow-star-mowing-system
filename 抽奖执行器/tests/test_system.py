@@ -1,4 +1,6 @@
 import copy
+import contextlib
+import io
 import json
 from pathlib import Path
 import subprocess
@@ -6,6 +8,7 @@ import sys
 import tempfile
 import unittest
 from unittest.mock import patch
+sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'系统设计师'))
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 import system as app
 
@@ -147,7 +150,7 @@ class DrawTests(unittest.TestCase):
 
 class CLITests(unittest.TestCase):
     def run_cli(self,state,*args):
-        return subprocess.run([sys.executable,str(app.ROOT/'system.py'),'--state',str(state),*args],capture_output=True,text=True)
+        return subprocess.run([sys.executable,str(app.EXECUTOR_ROOT/'system.py'),'--state',str(state),*args],capture_output=True,text=True)
     def test_cli_full_flow_reject_duplicate_kill_and_slot(self):
         with tempfile.TemporaryDirectory() as tmp:
             state=Path(tmp)/'hero.json'
@@ -180,7 +183,7 @@ class CLITests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             state=Path(tmp)/'hero.json';self.run_cli(state,'init')
             self.run_cli(state,'kill','初级兽将','20','--event','fund')
-            command=[sys.executable,str(app.ROOT/'system.py'),'--state',str(state),'draw','metal']
+            command=[sys.executable,str(app.EXECUTOR_ROOT/'system.py'),'--state',str(state),'draw','metal']
             procs=[subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True) for _ in range(2)]
             for p in procs: p.communicate(timeout=10)
             self.assertEqual(sorted(p.returncode for p in procs),[0,1])
@@ -188,5 +191,40 @@ class CLITests(unittest.TestCase):
             self.assertEqual(result['balance'],'100')
             self.assertEqual(len(result['ledger']),2)
             self.assertEqual(len(result['pending_offer']['choices']),2)
+
+class LayoutTests(unittest.TestCase):
+    def test_existing_character_and_catalog_have_one_canonical_location(self):
+        self.assertTrue((app.ADMIN_ROOT/'state'/'character.json').is_file())
+        self.assertTrue((app.DESIGN_ROOT/'data'/'skills.json').is_file())
+        self.assertFalse((app.ROOT/'state').exists())
+        self.assertFalse((app.ROOT/'data').exists())
+        from tools.build_catalog import ROOT as builder_root
+        self.assertEqual(builder_root,app.DESIGN_ROOT)
+
+    def test_command_can_run_outside_project_directory(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            result=subprocess.run([sys.executable,str(app.EXECUTOR_ROOT/'system.py'),'validate'],cwd=tmp,capture_output=True,text=True)
+            self.assertEqual(result.returncode,0,result.stderr)
+            self.assertIn('PASS',result.stdout)
+
+    def test_render_preserves_three_role_layout(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            target=Path(tmp)
+            report=app.render_catalog(*app.load_catalog(),root=target)
+            self.assertEqual(report['validation'],'PASS')
+            self.assertEqual(len(list((target/'系统设计师'/'docs'/'技能池').glob('*.md'))),26)
+            self.assertTrue((target/'抽奖执行器'/'reports'/'catalog_validation.json').is_file())
+            self.assertFalse((target/'docs').exists())
+            self.assertFalse((target/'reports').exists())
+
+    def test_default_state_uses_administrator_folder(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            admin=Path(tmp)/'设定管理员'
+            with patch.object(app,'ADMIN_ROOT',admin),patch.object(sys,'argv',['system.py','init']),contextlib.redirect_stdout(io.StringIO()):
+                app.main()
+            saved=app.read_json(admin/'state'/'character.json')
+            self.assertEqual(saved['balance'],'0')
+            self.assertEqual(saved['slots'],3)
+            self.assertTrue((admin/'state'/'character.md').is_file())
 
 if __name__=='__main__': unittest.main()

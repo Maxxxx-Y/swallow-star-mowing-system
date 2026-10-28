@@ -14,7 +14,10 @@ from contextlib import contextmanager
 from datetime import datetime, timezone
 from decimal import Decimal
 
-ROOT = Path(__file__).resolve().parent
+EXECUTOR_ROOT = Path(__file__).resolve().parent
+ROOT = EXECUTOR_ROOT.parent
+DESIGN_ROOT = ROOT/'系统设计师'
+ADMIN_ROOT = ROOT/'设定管理员'
 ROLES = {'攻击','防御','控制','辅助'}
 MECHANICS = {'boost','range','saving','reduction','projectile','hits','chain','pierce','orbit','return','shield','orbit_shield','targets','zones','duration','dot','burn','radius','death','trail','block','cooldown','reflect','dodge','decoy','tethers','marks','stacks','amplitude','gene','regen','kill_recovery','conversion','clone','contract','commands','slow','delay','warning','transfer'}
 CAPS = {'bonus_pct':50,'range_bonus_pct':50,'cost_reduction_pct':25,'damage_reduction_pct':25,'reflection_pct':25,'dodge_bonus_pp':10,'per_stack_bonus_pct':10,'amplitude_bonus_pct':50,'gene_bonus_pct':10,'heal_pct_per_s':1,'recovery_pct':5,'conversion_pct':30,'slow_pct':25,'clones':3,'duration_s':6,'delay_s':1,'warning_s':0.5,'radius_factor':0.8,'lifespan_s':60}
@@ -37,7 +40,7 @@ def catalog_hash(skills,pools,config):
     return hashlib.sha256(canonical([skills,pools,config])).hexdigest()
 
 def load_catalog(root=ROOT):
-    data=root/'data'
+    data=root/'系统设计师'/'data'
     return read_json(data/'skills.json'),read_json(data/'skill_pools.json'),read_json(data/'config.json')
 
 def validate_catalog(skills,pools,config):
@@ -241,8 +244,8 @@ def status_md(state,skills,config):
 
 def render_catalog(skills,pools,config,root=ROOT):
     members=validate_catalog(skills,pools,config)
-    docs=root/'docs'/'技能池'; docs.mkdir(parents=True,exist_ok=True)
-    summary=['# 技能池目录','','技能权威定义在 `data/skills.json`。此处按池展开，同ID跨池共享等级。每级都列完整效果；共同预算及约束见《数值规范》。','', '| 技能池 | ID | 旧积分价格 | 新积分价格 | 技能数 | 攻击 | 防御 | 控制 | 辅助 |','|---|---|---:|---:|---:|---:|---:|---:|---:|']
+    docs=root/'系统设计师'/'docs'/'技能池'; docs.mkdir(parents=True,exist_ok=True)
+    summary=['# 技能池目录','','技能权威定义在 [skills.json](../data/skills.json)。此处按池展开，同ID跨池共享等级。每级都列完整效果；共同预算及约束见[数值规范](数值规范.md)。','', '| 技能池 | ID | 旧积分价格 | 新积分价格 | 技能数 | 攻击 | 防御 | 控制 | 辅助 |','|---|---|---:|---:|---:|---:|---:|---:|---:|']
     for p in pools['pools']:
         ss=members[p['id']]; counts={r:sum(s['role']==r for s in ss) for r in ROLES}
         summary.append(f'| [{p["name"]}](技能池/{p["id"]}.md) | {p["id"]} | {p["price_base_points"]} | {money(Decimal(p["price_base_points"])/1000)} | {len(ss)} | {counts["攻击"]} | {counts["防御"]} | {counts["控制"]} | {counts["辅助"]} |')
@@ -253,16 +256,16 @@ def render_catalog(skills,pools,config,root=ROOT):
             lines += [f'| Lv{v["level"]} | {v["text"]} |' for v in s['levels']]
             lines+=['']
         (docs/(p['id']+'.md')).write_text('\n'.join(lines),encoding='utf-8')
-    (root/'docs'/'技能池目录.md').write_text('\n'.join(summary)+'\n',encoding='utf-8')
+    (root/'系统设计师'/'docs'/'技能池目录.md').write_text('\n'.join(summary)+'\n',encoding='utf-8')
     report={'catalog_hash':catalog_hash(skills,pools,config),'unique_skills':len(skills['skills']),
       'pool_memberships':sum(map(len,members.values())),'shared_skills':sum(len(s['pools'])>1 for s in skills['skills']),
       'pools':{pid:{'count':len(ss),'roles':{r:sum(s['role']==r for s in ss) for r in sorted(ROLES)}} for pid,ss in members.items()},'validation':'PASS'}
-    atomic_save(root/'reports'/'catalog_validation.json',report)
+    atomic_save(root/'抽奖执行器'/'reports'/'catalog_validation.json',report)
     return report
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--state',type=Path,default=ROOT/'state'/'character.json',help='独立存档路径，试抽请指向examples或/tmp')
+    parser.add_argument('--state',type=Path,default=ADMIN_ROOT/'state'/'character.json',help='独立存档路径，试抽可指定/tmp下的新文件')
     sub=parser.add_subparsers(dest='cmd',required=True)
     for name in ('validate','render','init','status','upgrade-planetary','pools'): sub.add_parser(name)
     draw=sub.add_parser('draw'); draw.add_argument('pool'); draw.add_argument('--reward-token',help='仅用于已获得的剧情奖励；免费三选一，编号一次性')
